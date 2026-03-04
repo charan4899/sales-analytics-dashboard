@@ -3,6 +3,48 @@ import csv
 import sqlite3
 
 app = Flask(__name__)
+def init_db():
+    conn = sqlite3.connect("sales.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS sales (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            product_name TEXT,
+            region TEXT,
+            revenue REAL,
+            month TEXT
+        )
+    """)
+
+    # Seed sample data if table is empty (important for fresh deployments)
+    cursor.execute("SELECT COUNT(*) FROM sales")
+    count = cursor.fetchone()[0]
+
+    if count == 0:
+        sample_data = [
+            ("Laptop", "North", 12000, "January"),
+            ("Phone", "South", 8000, "January"),
+            ("Tablet", "East", 6000, "January"),
+            ("Laptop", "West", 15000, "February"),
+            ("Phone", "North", 9000, "February"),
+            ("Tablet", "South", 7000, "February"),
+            ("Laptop", "East", 11000, "March"),
+            ("Phone", "West", 9500, "March"),
+            ("Tablet", "North", 7200, "March"),
+        ]
+
+        cursor.executemany("""
+            INSERT INTO sales (product_name, region, revenue, month)
+            VALUES (?, ?, ?, ?)
+        """, sample_data)
+
+    conn.commit()
+    conn.close()
+
+
+# ✅ Run once when app starts
+init_db()
 
 # ✅ Month ordering logic (Reusable)
 MONTH_ORDER = """
