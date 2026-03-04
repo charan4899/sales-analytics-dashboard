@@ -6,13 +6,13 @@ The application enables users to upload sales data, process it using SQL aggrega
 It demonstrates backend API development, database design, data aggregation logic, and frontend visualization integration.
 
 **Architecture**
-Frontend (HTML, CSS, JS)\n
+Frontend (HTML, CSS, JS)<br/>
 ⬇
-Flask REST API\n
+Flask REST API
 ⬇
-SQLite Database\n
+SQLite Database
 ⬇
-SQL Aggregations & Data Processing\n
+SQL Aggregations & Data Processing
 
 **Tech Stack**
 
