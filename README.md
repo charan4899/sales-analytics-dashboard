@@ -1,64 +1,197 @@
-# sales-analytics-dashboard
-**Overview**
+# 📊 Sales Analytics Dashboard
 
-This project is a full-stack Sales Analytics Platform built using Flask and SQLite, designed to simulate a real-world business intelligence reporting system.
-The application enables users to upload sales data, process it using SQL aggregations, and visualize key performance metrics through interactive dashboards and analytics reports.
-It demonstrates backend API development, database design, data aggregation logic, and frontend visualization integration.
+A full-stack **Sales Analytics Platform** built using **Flask** and **SQLite**, designed to simulate a real-world business intelligence and reporting system.
 
-**Architecture**
-Frontend (HTML, CSS, JS)<br/>
-⬇
-Flask REST API
-⬇
-SQLite Database
-⬇
-SQL Aggregations & Data Processing
+This project demonstrates backend API engineering, SQL aggregation logic, REST architecture design, CSV ingestion pipelines, pagination, and frontend visualization using Chart.js.
 
-**Tech Stack**
+---
 
-Python, Flask, SQLite, SQL, HTML / CSS / JavaScript, REST APIs, Chart.js (for visualization)
+## 🚀 Project Overview
 
-**Key Features**
-CSV Sales Data Upload\n
-Revenue Aggregation by Month
-Region-Based Filtering
-Top Product Identification
-Paginated Sales Reports
-Interactive Charts
-REST API Endpoints for Analytics
-Modular Backend Structure
+The application allows users to:
 
-**Database Schema**
+- Upload raw CSV sales datasets
+- Store and normalize data into a SQLite database
+- Perform SQL-based revenue aggregations
+- Filter analytics by region
+- Identify top-performing products
+- Generate paginated sales reports
+- Visualize results using interactive charts
 
-Table: sales
+It simulates how internal BI dashboards are built in real-world companies.
 
-Column	Type
-product_name	TEXT
-region	TEXT
-revenue	REAL
+---
 
-**API Endpoints**
+## 🏗 System Architecture
 
+```
+Frontend (HTML, CSS, JavaScript)
+        ↓
+Flask REST API (app.py)
+        ↓
+SQLite Database (sales.db)
+        ↓
+SQL Aggregations & Query Processing
+```
+
+---
+
+## 🛠 Tech Stack
+
+- Python
+- Flask
+- SQLite
+- SQL (GROUP BY, ORDER BY, LIMIT, OFFSET)
+- HTML / CSS / JavaScript
+- REST APIs
+- Chart.js (Visualization)
+- CSV Processing (Python csv module)
+
+---
+
+## 📂 Project Structure
+
+```
+sales-analytics-dashboard/
+│
+├── app.py
+├── sales.db
+├── templates/
+│   └── index.html
+├── static/
+│   ├── style.css
+│   └── script.js
+├── uploads/
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🗄 Database Schema
+
+### Table: `sales`
+
+| Column Name  | Type |
+|-------------|------|
+| product_name | TEXT |
+| region       | TEXT |
+| revenue      | REAL |
+
+> Data is populated dynamically from uploaded CSV files.
+
+---
+
+## 📁 CSV Data Ingestion Flow
+
+1. User uploads a CSV file.
+2. Flask parses the file using Python’s CSV module.
+3. Data is inserted into the `sales` table.
+4. SQL queries power analytics endpoints.
+
+This mimics ETL-style data ingestion used in analytics systems.
+
+---
+
+## 🔌 REST API Endpoints
+
+### 1️⃣ Monthly Revenue Aggregation
+
+```
 GET /api/monthly-data
+```
+
+**Functionality:**
+- Groups sales by month
+- Uses SQL `GROUP BY`
+- Orders months chronologically using custom month ordering logic
+
+---
+
+### 2️⃣ Region-Based Revenue
+
+```
 GET /api/region-data
+```
+
+- Aggregates revenue by region
+- Enables region-based filtering from frontend
+
+---
+
+### 3️⃣ Top Products
+
+```
 GET /api/top-products
-GET /api/reports
+```
 
-**Learning Outcomes**
+- Identifies highest revenue-generating products
+- Uses `GROUP BY` + `ORDER BY DESC`
+- Limited results using `LIMIT`
 
-Implemented SQL aggregation logic with dynamic filtering
-Designed paginated REST API endpoints
-Integrated backend data with frontend visualization
-Handled CSV ingestion and database population
-Built reusable query logic for month ordering
+---
 
-**Future Enhancements**
+### 4️⃣ Paginated Sales Reports
 
-PostgreSQL migration
-User authentication system
-Role-based access
-Revenue forecasting (ML integration)
-Dockerized deployment
-month	TEXT
+```
+GET /api/reports?page=1
+```
+
+- Implements pagination
+- Uses `LIMIT` and `OFFSET`
+- Designed for scalable data retrieval
 
 
+---
+
+## 📊 Frontend Visualization
+
+- Chart.js used for:
+  - Monthly revenue bar charts
+  - Region-wise pie charts
+  - Top products leaderboard
+- Data fetched asynchronously via REST APIs (AJAX)
+
+---
+
+## ✨ Key Features
+
+- CSV Sales Data Upload
+- Revenue Aggregation by Month
+- Chronological Month Ordering Logic
+- Region-Based Filtering
+- Top Product Identification
+- Paginated Reports
+- Interactive Charts
+- Modular Backend Structure
+- RESTful API Design
+
+---
+
+## 📚 Technical Learning Outcomes
+
+- Implemented SQL aggregation with dynamic filtering
+- Designed paginated REST API endpoints
+- Built data ingestion workflow
+- Integrated backend data with frontend visualization
+- Applied query optimization techniques
+- Structured scalable Flask backend architecture
+- Simulated real-world BI dashboard development
+
+---
+
+## 🔮 Future Enhancements
+
+- PostgreSQL Migration
+- User Authentication System
+- Role-Based Access Control
+- Revenue Forecasting (ML Integration)
+- Dockerized Deployment
+- Cloud Hosting (AWS / Render / Railway)
+
+---
+
+
+## 📄 License
+
+This project is open-source under the MIT License.
