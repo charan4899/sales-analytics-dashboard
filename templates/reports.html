@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <h2>🚀 SalesSys</h2>
+        <ul>
+            <li>
+                <a href="{{ url_for('home') }}">Dashboard</a>
+            </li>
+            <li class="active">
+                <a href="{{ url_for('reports') }}">Reports</a>
+            </li>
+            <li>
+                <a href="{{ url_for('analytics') }}">Analytics</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+
+        <div class="topbar">
+            <h1>Sales Reports</h1>
+        </div>
+
+        <div class="table-container">
+            <table id="salesTable">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Region</th>
+                        <th>Revenue</th>
+                        <th>Month</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <button onclick="prevPage()">Previous</button>
+                <span id="pageInfo"></span>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+
+</body>
+</html>

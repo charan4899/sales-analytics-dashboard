@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        {% include 'components/sidebar.html' %}
+    </div>
+
+    <div class="content">
+
+        <div class="topbar">
+            <h1>Advanced Analytics</h1>
+        </div>
+
+        <div style="display:flex; gap:20px;">
+            <div class="chart-container" style="flex:1;">
+                <h3>Revenue by Region</h3>
+                <canvas id="regionChart"></canvas>
+            </div>
+
+            <div class="chart-container" style="flex:1;">
+                <h3>Top 5 Products</h3>
+                <canvas id="productChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+
+</body>
+</html>

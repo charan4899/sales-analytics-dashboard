@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <h2>🚀 SalesSys</h2>
+        <ul>
+            <li class="active">
+                <a href="{{ url_for('home') }}">Dashboard</a>
+            </li>
+            <li>
+                <a href="{{ url_for('reports') }}">Reports</a>
+            </li>
+            <li>
+                <a href="{{ url_for('analytics') }}">Analytics</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+
+        <div class="topbar">
+            <h1>Sales Analytics Dashboard</h1>
+        </div>
+
+        <div class="controls">
+
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit">Upload CSV</button>
+            </form>
+
+            <form method="GET">
+                <select name="region" onchange="this.form.submit()">
+                    <option value="">All Regions</option>
+                    <option value="North" {% if selected_region == "North" %}selected{% endif %}>North</option>
+                    <option value="South" {% if selected_region == "South" %}selected{% endif %}>South</option>
+                    <option value="East" {% if selected_region == "East" %}selected{% endif %}>East</option>
+                    <option value="West" {% if selected_region == "West" %}selected{% endif %}>West</option>
+                </select>
+            </form>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p>${{ total_revenue }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Top Product</h3>
+                <p>{{ top_product }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Monthly Growth</h3>
+                <p>{{ growth }}%</p>
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+</html>
