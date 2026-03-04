@@ -167,7 +167,18 @@ GET /api/reports?page=1
 - RESTful API Design
 
 ---
+## Screenshots
 
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Reports
+![Reports](screenshots/reports.png)
+
+### Analytics
+![Analytics](screenshots/analytics.png)
+
+---
 ## 📚 Technical Learning Outcomes
 
 - Implemented SQL aggregation with dynamic filtering
