@@ -6,20 +6,20 @@ The application enables users to upload sales data, process it using SQL aggrega
 It demonstrates backend API development, database design, data aggregation logic, and frontend visualization integration.
 
 **Architecture**
-Frontend (HTML, CSS, JS)
+Frontend (HTML, CSS, JS)\n
 ⬇
-Flask REST API
+Flask REST API\n
 ⬇
-SQLite Database
+SQLite Database\n
 ⬇
-SQL Aggregations & Data Processing
+SQL Aggregations & Data Processing\n
 
 **Tech Stack**
 
 Python, Flask, SQLite, SQL, HTML / CSS / JavaScript, REST APIs, Chart.js (for visualization)
 
 **Key Features**
-CSV Sales Data Upload
+CSV Sales Data Upload\n
 Revenue Aggregation by Month
 Region-Based Filtering
 Top Product Identification
